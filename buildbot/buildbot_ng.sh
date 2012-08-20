@@ -6,6 +6,7 @@ branch='nightingale-1.11'
 # Version of Nightingale
 version='1.11.1'
 ngalebuild=`date +%Y-%m-%d-%H-%M-%S`
+daybefore=`date +%Y-%m-%d --date '1 days ago'`
 # Sourceforge.net username
 sfnet='geekshadow'
 # rsync binary (rsyncp allow password to be store
@@ -21,8 +22,9 @@ git fetch origin
 # Merge
 ngalechange=`git merge origin/${branch}`
 
-# If there are new changes, let's build !
-if [ "$ngalechange" != 'Already up-to-date.' ]
+# If there are new changes or using -f parameter,
+# let's build !
+if [ "$ngalechange" != 'Already up-to-date.' ] || [ "$1" = "-f" ]
  then
 
 make -f nightingale.mk clobber
@@ -36,6 +38,7 @@ if [ "$ngalebuildstatus" = 'Build finished!' ]
 
 mv compiled/dist compiled/Nightingale
 cd compiled
+git log --after={${daybefore}} > changes.txt
 #Tar then bz2
 tar cvf nightingale-${version}_linux-${arch}.tar Nightingale
 bzip2 nightingale-${version}_linux-${arch}.tar
@@ -45,6 +48,7 @@ md5sum nightingale-${version}_linux-${arch}.tar.bz2 > nightingale-${version}_lin
 mkdir /var/www/ngale/$ngalebuild
 mkdir /var/www/ngale/$ngalebuild/addons
 mv nightingale-${version}_linux-${arch}.tar.bz2* /var/www/ngale/$ngalebuild
+mv changes.txt /var/www/ngale/$ngalebuild
 mv xpi-stage/7digital/*.xpi /var/www/ngale/$ngalebuild/addons
 mv xpi-stage/albumartlastfm/*.xpi /var/www/ngale/$ngalebuild/addons
 mv xpi-stage/audioscrobbler/*.xpi /var/www/ngale/$ngalebuild/addons
