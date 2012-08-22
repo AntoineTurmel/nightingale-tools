@@ -6,6 +6,15 @@ This repo is a set of tools for Nightingale.
 buildbot: It's a bash script to compile Nightingale and upload nightlies if there are changes on a branch of the repo.
 You have to configure it by editing config.sh
 
+Be sure to install expect if you want to use stored password for sftp/rsync
+
+It's available on Debian/Ubuntu :
+```shell
+sudo apt-get install expect
+```
+
+On Windows : http://www.cis.usouthal.edu/share/fcw23/lynn/program/expect-5.21r1b1-setup.exe
+
 **How to:**
 
 ```shell
