@@ -48,7 +48,7 @@ mv xpi-stage/mashTape/*.xpi $compiled/$ngalebuild/addons
 mv xpi-stage/shoutcast-radio/*.xpi $compiled/$ngalebuild/addons
 
 #Uploading on sourceforge.net
-${rsync} -e ssh $compiled/$ngalebuild ${sfnet}@frs.sourceforge.net:/home/pfs/project/ngale/1.11-Nightlies/GNU-${osname}/${arch} -r --progress
+${rsync} -e ssh $compiled/$ngalebuild ${sfnet}@frs.sourceforge.net://home//pfs//project//ngale//1.11-Nightlies//${osname}//${arch} -r --progress
 
  else
 echo "Build fail, see buildlog for more info"
