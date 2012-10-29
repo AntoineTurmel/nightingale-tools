@@ -3,7 +3,8 @@ nightingale-tools
 
 This repo is a set of tools for Nightingale.
 
-buildbot: It's a bash script to compile Nightingale and upload nightlies if there are changes on a branch of the repo.
+## buildbot
+It's a bash script to compile Nightingale and upload nightlies if there are changes on a branch of the repo.
 You have to configure it by editing config.sh
 
 Be sure to install expect if you want to use stored password for sftp/rsync
@@ -36,3 +37,20 @@ You can put an entry in cron (/etc/crontab) to build it everyday:
   * On Windows we need to provide .zip/.exe (builded with [InnoSetup](http://www.jrsoftware.org/isdl.php))
   * The script should also be able to build public releases
 
+## l10n
+It's a bash script to fetch/download latest Songbird langpacks and extract them in separated locale folders.
+
+Be sure to install xsltproc and unzip before (available on Debian/Ubuntu):
+```shell
+sudo apt-get install xsltproc unzip
+```
+
+**How to:**
+
+```shell
+chmod +x fetch.sh
+./fetch.sh
+```
+
+**TODO:**
+  * Fetch matching Firefox locales for missing strings in some locales
