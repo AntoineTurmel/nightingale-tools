@@ -55,7 +55,23 @@ if [ "$ngalebuildstatus" = 'Build finished!' ]
 
 mv compiled/dist compiled/Nightingale
 cd compiled
-git log --after={${daybefore}} > changes.txt
+changes=`git log --after={${daybefore}}`
+echo "Nightingale "$version" - branch "$branchname" - build "$buildnumber > README.md
+echo "" >> README.md
+echo "Git source: <https://github.com/nightingale-media-player/nightingale-hacking/tree/"$branch">" >> README.md
+echo "" >> README.md
+echo "Changes:" >> README.md
+echo "" >> README.md
+
+if [ "$changes" = "" ]
+  then
+    echo "none" >> README.md
+    cat /dev/null > changes.txt
+  else
+    echo "$changes" >> README.md
+    echo "$changes" > changes.txt
+fi
+
 #Tar then bz2
 tar cvf nightingale-${version}-${buildnumber}_${osname}-${arch}.tar Nightingale
 bzip2 nightingale-${version}-${buildnumber}_${osname}-${arch}.tar
@@ -66,6 +82,7 @@ mkdir $compiled/$ngalebuild
 mkdir $compiled/$ngalebuild/addons
 mv nightingale-${version}-${buildnumber}_${osname}-${arch}.tar.bz2* $compiled/$ngalebuild
 mv changes.txt $compiled/$ngalebuild
+mv README.md $compiled/$ngalebuild
 mv xpi-stage/7digital/*.xpi $compiled/$ngalebuild/addons
 mv xpi-stage/albumartlastfm/*.xpi $compiled/$ngalebuild/addons
 mv xpi-stage/audioscrobbler/*.xpi $compiled/$ngalebuild/addons
