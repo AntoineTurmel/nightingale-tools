@@ -20,6 +20,16 @@ if [ "$ngalechange" != 'Already up-to-date.' ] || [ "$1" = "-f" ]
 
 # Get the buildnumber
 buildnumber=`cat build/sbBuildInfo.mk.in | grep BuildNumber= | sed -e 's/BuildNumber=//g'`
+# Get the version
+version=`cat build/sbBuildInfo.mk.in | grep SB_MILESTONE= | sed 's/SB_MILESTONE=//g'`
+# Get the branchname
+branchname=`cat build/sbBuildInfo.mk.in | grep SB_BRANCHNAME= | sed 's/SB_BRANCHNAME=//g'`
+
+# Check if we are on trunk
+if [ "$branchname" != 'trunk' ]
+ then
+  branchname=`echo $branchname | sed 's/Songbird//g'`
+fi
 
 make -f nightingale.mk clobber
 
@@ -51,7 +61,7 @@ mv xpi-stage/mashTape/*.xpi $compiled/$ngalebuild/addons
 mv xpi-stage/shoutcast-radio/*.xpi $compiled/$ngalebuild/addons
 
 #Uploading on sourceforge.net
-${rsync} -e ssh $compiled/$ngalebuild ${sfnetuser}@frs.sourceforge.net://home//pfs//project//ngale//1.11-Nightlies -r --progress
+${rsync} -e ssh $compiled/$ngalebuild ${sfnetuser}@frs.sourceforge.net://home//pfs//project//ngale//${branchname}-Nightlies -r --progress
 
  else
 echo "Build fail, see buildlog for more info"
