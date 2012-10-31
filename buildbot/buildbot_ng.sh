@@ -1,8 +1,21 @@
 #!/bin/bash
+
+# Include the config file
 source config.sh
+# Check the OS
+case $OSTYPE in
+  linux*)   osname='linux' ;;
+  msys*)    osname='windows' ;;
+  darwin*)  osname='macosx' ;;
+  solaris*) osname='solaris' ;;
+  bsd*)     osname='bsd' ;;
+  *)        osname='unknown' ;;
+esac
 # Check the architecture platform (eg. i686)
 arch=`uname -m`
+# Today date
 ngalebuild=`date +%Y-%m-%d`
+# One day before to get git changes
 daybefore=`date +%Y-%m-%d --date '1 days ago'`
 # Going to the repo folder
 cd "${repo}"

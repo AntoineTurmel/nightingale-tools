@@ -1,5 +1,3 @@
-# OS
-osname='linux'
 # The git branch you want to compile
 branch='nightingale-1.11'
 # Your sourceforge.net username
