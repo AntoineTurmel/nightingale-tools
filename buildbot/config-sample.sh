@@ -2,8 +2,6 @@
 branch='nightingale-1.11'
 # Your sourceforge.net username
 sfnetuser='yoursfuser'
-# The rsync binary/script
-rsync='/home/serveur/./rsyncp.sh'
 # The repo folder
 repo='/home/serveur/dev/nightingale-hacking'
 # The local path to store compiled files
