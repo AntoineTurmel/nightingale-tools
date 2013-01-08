@@ -72,15 +72,24 @@ if [ "$changes" = "" ]
     echo "$changes" > changes.txt
 fi
 
+if [ "$osname" = "windows" ]
+  then
+#Zip
+zip -r -9 nightingale-${version}-${buildnumber}_${osname}-${arch}.zip Nightingale
+#Making a md5sum
+md5sum nightingale-${version}-${buildnumber}_${osname}-${arch}.zip > nightingale-${version}-${buildnumber}_${osname}-${arch}.zip.md5
+  else
 #Tar then bz2
 tar cvf nightingale-${version}-${buildnumber}_${osname}-${arch}.tar Nightingale
 bzip2 nightingale-${version}-${buildnumber}_${osname}-${arch}.tar
 #Making a md5 sum
 md5sum nightingale-${version}-${buildnumber}_${osname}-${arch}.tar.bz2 > nightingale-${version}-${buildnumber}_${osname}-${arch}.tar.bz2.md5
+fi
+
 #Creating a folder and moving the file to be reachable
 mkdir $compiled/$ngalebuild
 mkdir $compiled/$ngalebuild/addons
-mv nightingale-${version}-${buildnumber}_${osname}-${arch}.tar.bz2* $compiled/$ngalebuild
+mv nightingale-${version}-${buildnumber}_${osname}-${arch}.* $compiled/$ngalebuild
 mv changes.txt $compiled/$ngalebuild
 mv README.md $compiled/$ngalebuild
 mv xpi-stage/7digital/*.xpi $compiled/$ngalebuild/addons
