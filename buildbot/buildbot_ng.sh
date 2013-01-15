@@ -99,8 +99,14 @@ mv xpi-stage/concerts/*.xpi $compiled/$ngalebuild/addons
 mv xpi-stage/mashTape/*.xpi $compiled/$ngalebuild/addons
 mv xpi-stage/shoutcast-radio/*.xpi $compiled/$ngalebuild/addons
 
+if [ "$osname" = "windows" ] || [ "$osname" = "macosx" ]
+  then
+mv _built_installer/* $compiled/$ngalebuild
+fi
+
 #Uploading on sourceforge.net
-rsync -e ssh $compiled/$ngalebuild ${sfnetuser}@frs.sourceforge.net://home//pfs//project//ngale//${branchname}-Nightlies -r --progress
+cd "${compiled}"
+rsync -e ssh $ngalebuild ${sfnetuser}@frs.sourceforge.net://home//pfs//project//ngale//${branchname}-Nightlies -r --progress
 
  else
 echo "Build fail, see buildlog for more info"
