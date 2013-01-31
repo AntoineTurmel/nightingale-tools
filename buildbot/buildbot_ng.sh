@@ -57,13 +57,7 @@ if [ "$branchname" != 'sb-trunk-oldxul' ]
   branchname=`echo $branchname | sed 's/Songbird//g'`
 fi
 
-if [ "$osname" = "macosx" ]; then
-  # on mac, the build rules and flags are a little more complex and not
-  # rolled into the makefile yet
-  sh build.sh
-else
-  make -f nightingale.mk clobber
-fi
+make -f nightingale.mk clobber
 
 ./build.sh > buildlog
 ngalebuildstatus=`cat buildlog | tail --lines=1`
