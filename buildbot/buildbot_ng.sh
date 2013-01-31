@@ -30,6 +30,8 @@ fi
 
 # Going to the repo folder
 cd "${repo}"
+# Clean up
+git reset --hard
 # Checkout the right branch
 git checkout ${branch}
 # Fetch changes from GitHub
@@ -55,7 +57,13 @@ if [ "$branchname" != 'sb-trunk-oldxul' ]
   branchname=`echo $branchname | sed 's/Songbird//g'`
 fi
 
-make -f nightingale.mk clobber
+if [ "$osname" = "macosx" ]; then
+  # on mac, the build rules and flags are a little more complex and not
+  # rolled into the makefile yet
+  sh build.sh
+else
+  make -f nightingale.mk clobber
+fi
 
 ./build.sh > buildlog
 ngalebuildstatus=`cat buildlog | tail --lines=1`
