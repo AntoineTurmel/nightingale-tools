@@ -64,7 +64,9 @@ fi
 make -f nightingale.mk clobber
 
 cd ${repo}
-bash ./build.sh || exit 1
+bash ./build.sh &> buildlog
+
+if [ $(cat buildlog|grep -i 'build\ succeeded') ]; then
 
 mv compiled/dist compiled/Nightingale
 cd compiled
@@ -124,4 +126,8 @@ rsync -e ssh $ngalebuild ${sfnetuser}@frs.sourceforge.net://home//pfs//project//
 
  else
 echo "Nothing to do, bye !"
+fi
+
+ else
+echo "Build failed! See buildlog for details"
 fi
