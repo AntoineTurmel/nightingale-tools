@@ -11,8 +11,14 @@ case $OSTYPE in
   bsd*)     osname='bsd' ;;
   *)        osname='unknown' ;;
 esac
-# Check the architecture platform (eg. i686)
-arch=`uname -m`
+
+if [ "$osname" == "macosx" ]; then
+  arch="i686"
+else
+  # Check the architecture platform (eg. i686)
+  arch=`uname -m`
+fi
+
 # Today date
 ngalebuild=`date +%Y-%m-%d`
 # One day before to get git changes
@@ -39,7 +45,7 @@ version=`cat build/sbBuildInfo.mk.in | grep SB_MILESTONE= | sed 's/SB_MILESTONE=
 branchname=`cat build/sbBuildInfo.mk.in | grep SB_BRANCHNAME= | sed 's/SB_BRANCHNAME=//g'`
 
 # Check if we are on trunk
-if [ "$branchname" != 'trunk' ]
+if [ "$branchname" != 'sb-trunk-oldxul' ]
  then
   branchname=`echo $branchname | sed 's/Songbird//g'`
 fi

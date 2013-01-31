@@ -1,5 +1,5 @@
 # The git branch you want to compile
-branch='nightingale-1.11'
+branch='sb-trunk-oldxul'
 # Your sourceforge.net username
 sfnetuser='yoursfuser'
 # The repo folder
