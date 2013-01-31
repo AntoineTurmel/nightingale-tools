@@ -107,7 +107,7 @@ if [ "$ngalechange" != 'Already up-to-date.' ] || [ "$1" = "-f" ]; then
 		#Creating a folder and moving the file to be reachable
 		mkdir $compiled/$ngalebuild
 		mkdir $compiled/$ngalebuild/addons
-		mv nightingale-${version}-${buildnumber}_${osname}-${arch}.* $compiled/$ngalebuild
+		[ "$osname" != "macosx" ] && mv nightingale-${version}-${buildnumber}_${osname}-${arch}.* $compiled/$ngalebuild
 		mv changes.txt $compiled/$ngalebuild
 		mv README.md $compiled/$ngalebuild
 		mv xpi-stage/7digital/*.xpi $compiled/$ngalebuild/addons
