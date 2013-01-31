@@ -64,9 +64,9 @@ fi
 make -f nightingale.mk clobber
 
 cd ${repo}
-bash ./build.sh &> buildlog
+bash ./build.sh |tee "${repo}/buildlog"
 
-if [ $(cat buildlog|grep -i 'build\ succeeded') ]; then
+if [ "`cat buildlog|grep 'Succeeded'`" ]; then
 
 mv compiled/dist compiled/Nightingale
 cd compiled
@@ -97,8 +97,13 @@ md5sum nightingale-${version}-${buildnumber}_${osname}-${arch}.zip > nightingale
 #Tar then bz2
 tar cvf nightingale-${version}-${buildnumber}_${osname}-${arch}.tar Nightingale
 bzip2 nightingale-${version}-${buildnumber}_${osname}-${arch}.tar
+
+if [ "$osname" = "macosx" ]; then
+md5 nightingale-${version}-${buildnumber}_${osname}-${arch}.tar.bz2 > nightingale-${version}-${buildnumber}_${osname}-${arch}.tar.bz2.md5
+else
 #Making a md5 sum
 md5sum nightingale-${version}-${buildnumber}_${osname}-${arch}.tar.bz2 > nightingale-${version}-${buildnumber}_${osname}-${arch}.tar.bz2.md5
+fi
 fi
 
 #Creating a folder and moving the file to be reachable
