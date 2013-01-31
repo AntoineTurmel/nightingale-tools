@@ -94,13 +94,11 @@ if [ "$ngalechange" != 'Already up-to-date.' ] || [ "$1" = "-f" ]; then
 			#Making a md5sum
 			md5sum nightingale-${version}-${buildnumber}_${osname}-${arch}.zip > nightingale-${version}-${buildnumber}_${osname}-${arch}.zip.md5
 		else
-			#Tar then bz2
-			tar cvf nightingale-${version}-${buildnumber}_${osname}-${arch}.tar Nightingale
-			bzip2 nightingale-${version}-${buildnumber}_${osname}-${arch}.tar
+			if [ "$osname" != "macosx" ]; then
+				#Tar then bz2
+				tar cvf nightingale-${version}-${buildnumber}_${osname}-${arch}.tar Nightingale
+				bzip2 nightingale-${version}-${buildnumber}_${osname}-${arch}.tar
 
-			if [ "$osname" == "macosx" ]; then
-				md5 nightingale-${version}-${buildnumber}_${osname}-${arch}.tar.bz2 > nightingale-${version}-${buildnumber}_${osname}-${arch}.tar.bz2.md5
-			else
 				#Making a md5 sum
 				md5sum nightingale-${version}-${buildnumber}_${osname}-${arch}.tar.bz2 > nightingale-${version}-${buildnumber}_${osname}-${arch}.tar.bz2.md5
 			fi
