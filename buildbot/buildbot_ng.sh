@@ -64,7 +64,7 @@ fi
 make -f nightingale.mk clobber
 
 cd ${repo}
-bash ./build.sh || return 1 #with set-e, it'll die here if it breaks
+#bash ./build.sh || exit 1
 
 mv compiled/dist compiled/Nightingale
 cd compiled
