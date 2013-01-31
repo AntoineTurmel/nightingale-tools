@@ -63,6 +63,7 @@ if [ "$ngalechange" != 'Already up-to-date.' ] || [ "$1" = "-f" ]; then
 		branchname=`echo $branchname | sed 's/Songbird//g'`
 	fi
 
+	# remove old build
 	make -f nightingale.mk clobber
 
 	cd ${repo}
@@ -87,7 +88,7 @@ if [ "$ngalechange" != 'Already up-to-date.' ] || [ "$1" = "-f" ]; then
 			echo "$changes" > changes.txt
 		fi
 
-		if [ "$osname" = "windows" ]; then
+		if [ "$osname" == "windows" ]; then
 			#Zip
 			zip -r -9 nightingale-${version}-${buildnumber}_${osname}-${arch}.zip Nightingale
 			#Making a md5sum
@@ -97,7 +98,7 @@ if [ "$ngalechange" != 'Already up-to-date.' ] || [ "$1" = "-f" ]; then
 			tar cvf nightingale-${version}-${buildnumber}_${osname}-${arch}.tar Nightingale
 			bzip2 nightingale-${version}-${buildnumber}_${osname}-${arch}.tar
 
-			if [ "$osname" = "macosx" ]; then
+			if [ "$osname" == "macosx" ]; then
 				md5 nightingale-${version}-${buildnumber}_${osname}-${arch}.tar.bz2 > nightingale-${version}-${buildnumber}_${osname}-${arch}.tar.bz2.md5
 			else
 				#Making a md5 sum
@@ -118,7 +119,7 @@ if [ "$ngalechange" != 'Already up-to-date.' ] || [ "$1" = "-f" ]; then
 		mv xpi-stage/mashTape/*.xpi $compiled/$ngalebuild/addons
 		mv xpi-stage/shoutcast-radio/*.xpi $compiled/$ngalebuild/addons
 
-		if [ "$osname" = "windows" ] || [ "$osname" = "macosx" ]; then
+		if [ "$osname" == "windows" ] || [ "$osname" = "macosx" ]; then
 			mv _built_installer/* $compiled/$ngalebuild
 		fi
 
