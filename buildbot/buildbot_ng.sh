@@ -1,7 +1,11 @@
 #!/bin/bash
 
+set -e
+
 # Include the config file
 source config.sh
+export PATH=$PATH
+
 # Check the OS
 case $OSTYPE in
   linux*)   osname='linux' ;;
@@ -59,12 +63,8 @@ fi
 
 make -f nightingale.mk clobber
 
-./build.sh > buildlog
-ngalebuildstatus=`cat buildlog | tail --lines=1`
-
-# If ngale was successfully builded, package it
-if [ "$ngalebuildstatus" = 'Build finished!' ]
- then
+cd ${repo}
+bash ./build.sh || return 1 #with set-e, it'll die here if it breaks
 
 mv compiled/dist compiled/Nightingale
 cd compiled
@@ -121,9 +121,6 @@ fi
 cd "${compiled}"
 rsync -e ssh $ngalebuild ${sfnetuser}@frs.sourceforge.net://home//pfs//project//ngale//${branchname}-Nightlies -r --progress
 
- else
-echo "Build fail, see buildlog for more info"
-fi
 
  else
 echo "Nothing to do, bye !"
