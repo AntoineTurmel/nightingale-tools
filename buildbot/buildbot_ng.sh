@@ -20,9 +20,14 @@ else
 fi
 
 # Today date
-ngalebuild=`date +%Y-%m-%d`
+ngalebuild=`date "+%Y-%m-%d"`
 # One day before to get git changes
-daybefore=`date +%Y-%m-%d --date '1 days ago'`
+if [ "$osname" == "macosx" ]; then
+  daybefore=`date -v -1d "+%Y-%m-%d"`
+else
+  daybefore=`date "+%Y-%m-%d" --date '1 days ago'`
+fi
+
 # Going to the repo folder
 cd "${repo}"
 # Checkout the right branch
