@@ -29,9 +29,8 @@ You can put an entry in cron (/etc/crontab) to build it everyday:
 ```
 
 **TODO:**
-  * Make the script work on Windows and Mac OS X
-  * On Windows we need to provide .zip/.exe (builded with [InnoSetup](http://www.jrsoftware.org/isdl.php))
-  * The script should also be able to build public releases
+
+Look at [issues](https://github.com/GeekShadow/nightingale-tools/issues?state=open) on GitHub.
 
 ## l10n
 It's a bash script to fetch/download latest Songbird langpacks and extract them in separated locale folders.
