@@ -64,7 +64,7 @@ if [ "$ngalechange" != 'Already up-to-date.' ] || [ "$1" = "-f" ]; then
 	fi
 
 	# remove old build
-	make -f nightingale.mk clobber
+	make clobber
 
 	cd ${repo}
 	bash ./build.sh |tee "${repo}/buildlog"
