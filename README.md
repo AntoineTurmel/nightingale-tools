@@ -28,6 +28,15 @@ You can put an entry in cron (/etc/crontab) to build it everyday:
   0 0   *   *   * youruser /home/youruser/./buildbot_ng.sh
 ```
 
+**Linux/Mac users:**
+
+Be sure to have rsync and git installed
+
+**Windows users:**
+
+* You should [retrieve a copy of rsync](https://www.itefix.no/i2/sites/default/files/cwRsync_4.0.5_Installer.zip) then copy rsync.exe, ssh.exe and other .dll in your mozilla-build\msys\bin folder.
+* You should [install Git](http://git-scm.com/)
+
 **TODO:**
 
 Look at [issues](https://github.com/GeekShadow/nightingale-tools/issues?state=open) on GitHub.
