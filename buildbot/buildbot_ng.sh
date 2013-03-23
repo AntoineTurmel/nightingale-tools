@@ -110,7 +110,6 @@ if [ "$ngalechange" != 'Already up-to-date.' ] || [ "$1" = "-f" ]; then
 		[ "$osname" != "macosx" ] && mv nightingale-${version}-${buildnumber}_${osname}-${arch}.* $compiled/$ngalebuild
 		mv changes.txt $compiled/$ngalebuild
 		mv README.md $compiled/$ngalebuild
-		mv xpi-stage/7digital/*.xpi $compiled/$ngalebuild/addons
 		mv xpi-stage/albumartlastfm/*.xpi $compiled/$ngalebuild/addons
 		mv xpi-stage/audioscrobbler/*.xpi $compiled/$ngalebuild/addons
 		mv xpi-stage/concerts/*.xpi $compiled/$ngalebuild/addons
