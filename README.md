@@ -42,7 +42,7 @@ Be sure to have rsync and git installed
 Look at [issues](https://github.com/GeekShadow/nightingale-tools/issues?state=open) on GitHub.
 
 ## l10n
-It's a bash script to fetch/download latest Songbird langpacks and extract them in separated locale folders.
+fetch.sh is a bash script to fetch/download latest Songbird langpacks and extract them in separated locale folders.
 
 Be sure to install xsltproc and unzip before (available on Debian/Ubuntu):
 ```shell
@@ -55,6 +55,8 @@ sudo apt-get install xsltproc unzip
 chmod +x fetch.sh
 ./fetch.sh
 ```
+
+repack.sh is quite the same script but it repack langpacks to be compatible with Nightingale.
 
 **TODO:**
   * Fetch matching Firefox locales for missing strings in some locales
