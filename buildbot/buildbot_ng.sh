@@ -120,9 +120,12 @@ if [ "$ngalechange" != 'Already up-to-date.' ] || [ "$1" = "-f" ]; then
 			mv _built_installer/* $compiled/$ngalebuild
 		fi
 
+		cp $compiled/$ngalebuild $compiled/latest -r
+
 		#Uploading on sourceforge.net
 		cd "${compiled}"
 		rsync -e ssh $ngalebuild ${sfnetuser}@frs.sourceforge.net://home//pfs//project//ngale//${branchname}-Nightlies -r --progress
+		rsync -e ssh latest ${sfnetuser}@frs.sourceforge.net://home//pfs//project//ngale//${branchname}-Nightlies -r --progress
 	else
 		echo "Build failed! See buildlog for details"
 	fi
