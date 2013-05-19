@@ -14,7 +14,7 @@ https://sourceforge.net/apps/trac/sourceforge/wiki/SSH%20keys
 
 **How to:**
 
-```shell
+```bash
 cp config-sample.sh config.sh #copy the sample to the config file
 nano config.sh #edit config file using your favorite text editor
 chmod +x buildbot_ng.sh #to make the script executable
@@ -45,13 +45,13 @@ Look at [issues](https://github.com/GeekShadow/nightingale-tools/issues?state=op
 fetch.sh is a bash script to fetch/download latest Songbird langpacks and extract them in separated locale folders.
 
 Be sure to install xsltproc and unzip before (available on Debian/Ubuntu):
-```shell
+```bash
 sudo apt-get install xsltproc unzip
 ```
 
 **How to:**
 
-```shell
+```bash
 chmod +x fetch.sh
 ./fetch.sh
 ```
