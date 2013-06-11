@@ -29,6 +29,7 @@ for file in *; do
       unzip $file/langpack-* -d $file
       # Remove the langpack xpi
       rm $file/langpack-*
+      wget "http://translate.songbirdnest.com/languages/"${file}"/translators" -O $file/translators.html
       cd $file
       # Adding Nightingale compatibility to the install.rdf
       sed '11a\    <!-- Nightingale -->' install.rdf > fdr.llatsni

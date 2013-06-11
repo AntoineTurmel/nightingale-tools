@@ -28,5 +28,6 @@ for file in *; do
       rm $file/install.rdf
       rm $file/chrome.manifest
       rm -Rf $file/chrome
+      wget "http://translate.songbirdnest.com/languages/"${file}"/translators" -O $file/translators.html
    fi
 done
