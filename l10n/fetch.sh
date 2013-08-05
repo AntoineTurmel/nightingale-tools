@@ -8,7 +8,7 @@ mkdir locales
 # Remove locales.xml first
 rm locales.xml
 # Download locales.xml
-wget https://locales.songbirdnest.com/bundles/3/Songbird/${version}/timestamp/osarch/en-US/release/os/default/default/locales.xml
+wget https://locales.songbirdnest.com/bundles/3/Songbird/${version}/timestamp/osarch/en-US/release/os/default/default/locales.xml --no-check-certificate
 # Generate a list of downloadable files with wget
 xsltproc locales.xsl locales.xml > locales/getlangpacks.sh
 cd locales

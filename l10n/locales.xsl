@@ -8,7 +8,7 @@
       <xsl:text>cd </xsl:text>
       <xsl:value-of select="@languageTag"/>
       <xsl:text>&#xA;</xsl:text>
-      <xsl:text>wget </xsl:text>
+      <xsl:text>wget --no-check-certificate </xsl:text>
       <xsl:value-of select="@url"/>
       <xsl:text>&#xA;</xsl:text>
       <xsl:text>cd .. </xsl:text>
