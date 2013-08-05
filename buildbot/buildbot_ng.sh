@@ -120,7 +120,13 @@ if [ "$ngalechange" != 'Already up-to-date.' ] || [ "$1" = "-f" ]; then
 			mv _built_installer/* $compiled/$ngalebuild
 		fi
 
-		cp $compiled/$ngalebuild $compiled/latest -r
+		if test -d $compiled/latest; then
+			echo ""
+		else
+			mkdir $compiled/latest
+		fi
+
+		cp $compiled/$ngalebuild/* $compiled/latest -r
 
 		#Uploading on sourceforge.net
 		cd "${compiled}"
