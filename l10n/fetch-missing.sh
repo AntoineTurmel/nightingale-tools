@@ -15,8 +15,13 @@ cd locales
 for lang_code in $(cat $l10n_path/missing-locales)
 do
 
+mkdir $lang_code
+cd $lang_code
+
 wget -O "langpack-"$lang_code"-"$sb_version".xpi" http://translate.songbirdnest.com/languages/$lang_code/langpack --user-agent="$sb_user_agent"
 sleep 60
+
+cd ..
 
 done
 
