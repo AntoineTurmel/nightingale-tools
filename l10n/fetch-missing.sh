@@ -16,7 +16,7 @@ for lang_code in $(cat $l10n_path/missing-locales)
 do
 
 wget -O "langpack-"$lang_code"-"$sb_version".xpi" http://translate.songbirdnest.com/languages/$lang_code/langpack --user-agent="$sb_user_agent"
-wait 60
+sleep 60
 
 done
 
