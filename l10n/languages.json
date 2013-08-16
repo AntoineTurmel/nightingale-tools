@@ -71,6 +71,10 @@
         "Native": "Deutsch",
         "English": "German"
     },
+    "dv": {
+        "Native": "Dhivehi",
+        "English": "Dhivehi"
+    },
     "el": {
         "Native": "Ελληνικά",
         "English": "Greek"
@@ -126,6 +130,10 @@
     "fi": {
         "Native": "suomi",
         "English": "Finnish"
+    },
+    "fo": {
+        "Native": "føroyskt",
+        "English": "Faroese"
     },
     "fr": {
         "Native": "Français",
@@ -207,6 +215,18 @@
         "Native": "한국어",
         "English": "Korean"
     },
+    "ku": {
+        "Native": "Kurdî",
+        "English": "Kurdish"
+    },
+    "kw": {
+        "Native": "Kernewek",
+        "English": "Cornish"
+    },
+    "lb": {
+        "Native": "Lëtzebuergesch",
+        "English": "Luxembourgish"
+    },
     "lij": {
         "Native": "Ligure",
         "English": "Ligurian"
@@ -242,6 +262,10 @@
     "ms": {
         "Native": "Melayu",
         "English": "Malay"
+    },
+    "mt": {
+        "Native": "Malti",
+        "English": "Maltese"
     },
     "my": {
         "Native": "မြန်မာဘာသာ",
