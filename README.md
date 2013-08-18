@@ -37,26 +37,22 @@ Be sure to have rsync and git installed
 * You should [retrieve a copy of rsync](https://www.itefix.no/i2/sites/default/files/cwRsync_4.0.5_Installer.zip) then copy rsync.exe, ssh.exe and other .dll in your mozilla-build\msys\bin folder.
 * You should [install Git](http://git-scm.com/)
 
-**TODO:**
-
-Look at [issues](https://github.com/GeekShadow/nightingale-tools/issues?state=open) on GitHub.
 
 ## l10n
-fetch.sh is a bash script to fetch/download latest Songbird langpacks and extract them in separated locale folders.
+  * **fetch.sh** is a bash script to fetch/download latest Songbird langpacks and extract them in separated locale folders.
 
 Be sure to install xsltproc and unzip before (available on Debian/Ubuntu):
 ```bash
 sudo apt-get install xsltproc unzip
 ```
 
-**How to:**
+  * **repack.sh** is quite the same script but it repack langpacks to be compatible with Nightingale.
+  * **fetch-missing.sh** is a bash script to download Songbird langpacks which are not shipped by default (less than 50% strings translated)
+  * **produce-langpack.sh** is a bash script to produce langpacks xpi files for Nightingale based on strings from [Adofex](http://beta.babelzilla.org/projects/p/Nightingale/) and Mozilla strings it also generates a locales.xml file
 
-```bash
-chmod +x fetch.sh
-./fetch.sh
-```
+Be sure to install [tx](http://blog.babelzilla.org/2012/11/09/beta-babelzilla-live/) and [jq](http://stedolan.github.io/jq/download/) before.
 
-repack.sh is quite the same script but it repack langpacks to be compatible with Nightingale.
 
-**TODO:**
-  * Fetch matching Firefox locales for missing strings in some locales
+## TODO
+Look at [issues](https://github.com/GeekShadow/nightingale-tools/issues?state=open) on GitHub.
+
