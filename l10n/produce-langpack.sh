@@ -48,11 +48,70 @@ do
 locale songbird '$lang_code' jar:songbird.jar!/' > chrome.manifest
 
   else
-    unzip -o $lang_code.xpi
-    rm $lang_code.xpi
-    
-    # Writing the chrome.manifest file
-    echo '# Nightingale strings:
+    # iCook better, get a new Jobs!
+    if [ "$lang_code" == "ja" ]; then
+      wget -q "http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$moz_version/mac/xpi/ja-JP-mac.xpi"
+      unzip -o ja.xpi
+      unzip -o ja-JP-mac.xpi
+      rm ja.xpi
+      rm ja-JP-mac.xpi
+
+      echo '# Nightingale strings:
+locale  songbird  ja  jar:songbird.jar!/
+# platform: linux
+locale mozapps ja jar:chrome/ja.jar!/locale/ja/mozapps/ os!=WINNT os!=Darwin
+locale pipnss ja jar:chrome/ja.jar!/locale/ja/pipnss/ os!=WINNT os!=Darwin
+locale browser ja jar:chrome/ja.jar!/locale/browser/ os!=WINNT os!=Darwin
+locale necko ja jar:chrome/ja.jar!/locale/ja/necko/ os!=WINNT os!=Darwin
+locale reporter ja jar:chrome/ja.jar!/locale/ja/reporter/ os!=WINNT os!=Darwin
+locale browser-region ja jar:chrome/ja.jar!/locale/browser-region/ os!=WINNT os!=Darwin
+locale places ja jar:chrome/ja.jar!/locale/ja/places/ os!=WINNT os!=Darwin
+locale cookie ja jar:chrome/ja.jar!/locale/ja/cookie/ os!=WINNT os!=Darwin
+locale global-region ja jar:chrome/ja.jar!/locale/ja/global-region/ os!=WINNT os!=Darwin
+locale pippki ja jar:chrome/ja.jar!/locale/ja/pippki/ os!=WINNT os!=Darwin
+locale passwordmgr ja jar:chrome/ja.jar!/locale/ja/passwordmgr/ os!=WINNT os!=Darwin
+locale alerts ja jar:chrome/ja.jar!/locale/ja/alerts/ os!=WINNT os!=Darwin
+locale global-platform ja jar:chrome/ja.jar!/locale/ja/global-platform/ os!=WINNT os!=Darwin
+locale autoconfig ja jar:chrome/ja.jar!/locale/ja/autoconfig/ os!=WINNT os!=Darwin
+locale global ja jar:chrome/ja.jar!/locale/ja/global/ os!=WINNT os!=Darwin
+# platform: win32
+locale mozapps ja jar:chrome/ja.jar!/locale/ja/mozapps/ os=WINNT
+locale pipnss ja jar:chrome/ja.jar!/locale/ja/pipnss/ os=WINNT
+locale browser ja jar:chrome/ja.jar!/locale/browser/ os=WINNT
+locale necko ja jar:chrome/ja.jar!/locale/ja/necko/ os=WINNT
+locale reporter ja jar:chrome/ja.jar!/locale/ja/reporter/ os=WINNT
+locale browser-region ja jar:chrome/ja.jar!/locale/browser-region/ os=WINNT
+locale places ja jar:chrome/ja.jar!/locale/ja/places/ os=WINNT
+locale cookie ja jar:chrome/ja.jar!/locale/ja/cookie/ os=WINNT
+locale global-region ja jar:chrome/ja.jar!/locale/ja/global-region/ os=WINNT
+locale pippki ja jar:chrome/ja.jar!/locale/ja/pippki/ os=WINNT
+locale passwordmgr ja jar:chrome/ja.jar!/locale/ja/passwordmgr/ os=WINNT
+locale alerts ja jar:chrome/ja.jar!/locale/ja/alerts/ os=WINNT
+locale global-platform ja jar:chrome/ja.jar!/locale/ja/global-platform/ os=WINNT
+locale autoconfig ja jar:chrome/ja.jar!/locale/ja/autoconfig/ os=WINNT
+locale global ja jar:chrome/ja.jar!/locale/ja/global/ os=WINNT
+# platform: osx
+locale autoconfig ja-JP-mac jar:chrome/ja-JP-mac.jar!/locale/ja-JP-mac/autoconfig/ os=Darwin
+locale global-region ja-JP-mac jar:chrome/ja-JP-mac.jar!/locale/ja-JP-mac/global-region/ os=Darwin
+locale mozapps ja-JP-mac jar:chrome/ja-JP-mac.jar!/locale/ja-JP-mac/mozapps/ os=Darwin
+locale cookie ja-JP-mac jar:chrome/ja-JP-mac.jar!/locale/ja-JP-mac/cookie/ os=Darwin
+locale pippki ja-JP-mac jar:chrome/ja-JP-mac.jar!/locale/ja-JP-mac/pippki/ os=Darwin
+locale reporter ja-JP-mac jar:chrome/ja-JP-mac.jar!/locale/ja-JP-mac/reporter/ os=Darwin
+locale places ja-JP-mac jar:chrome/ja-JP-mac.jar!/locale/ja-JP-mac/places/ os=Darwin
+locale global-platform ja-JP-mac jar:chrome/ja-JP-mac.jar!/locale/ja-JP-mac/global-platform/ os=Darwin
+locale alerts ja-JP-mac jar:chrome/ja-JP-mac.jar!/locale/ja-JP-mac/alerts/ os=Darwin
+locale browser ja-JP-mac jar:chrome/ja-JP-mac.jar!/locale/browser/ os=Darwin
+locale necko ja-JP-mac jar:chrome/ja-JP-mac.jar!/locale/ja-JP-mac/necko/ os=Darwin
+locale pipnss ja-JP-mac jar:chrome/ja-JP-mac.jar!/locale/ja-JP-mac/pipnss/ os=Darwin
+locale browser-region ja-JP-mac jar:chrome/ja-JP-mac.jar!/locale/browser-region/ os=Darwin
+locale global ja-JP-mac jar:chrome/ja-JP-mac.jar!/locale/ja-JP-mac/global/ os=Darwin
+locale passwordmgr ja-JP-mac jar:chrome/ja-JP-mac.jar!/locale/ja-JP-mac/passwordmgr/ os=Darwin' > chrome.manifest
+    else
+      unzip -o $lang_code.xpi
+      rm $lang_code.xpi
+
+      # Writing the chrome.manifest file
+      echo '# Nightingale strings:
 locale songbird '$lang_code' jar:songbird.jar!/
 # Mozilla strings:
 locale browser-region '$lang_code' jar:chrome/'$lang_code'.jar!/locale/browser-region/
@@ -70,7 +129,7 @@ locale places '$lang_code' jar:chrome/'$lang_code'.jar!/locale/'$lang_code'/plac
 locale global-region '$lang_code' jar:chrome/'$lang_code'.jar!/locale/'$lang_code'/global-region/
 locale alerts '$lang_code' jar:chrome/'$lang_code'.jar!/locale/'$lang_code'/alerts/
 locale autoconfig '$lang_code' jar:chrome/'$lang_code'.jar!/locale/'$lang_code'/autoconfig/ ' > chrome.manifest 
- 
+    fi
   fi
 
   # Writing the install.rdf file
