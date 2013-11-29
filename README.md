@@ -39,6 +39,13 @@ Be sure to have rsync and git installed
 
 
 ## l10n
+
+  * **produce-langpack.sh** is a bash script to produce langpacks xpi files for Nightingale based on strings from [Adofex](http://beta.babelzilla.org/projects/p/Nightingale/) and Mozilla strings it also generates a locales.xml file
+
+Be sure to install [tx](http://blog.babelzilla.org/2012/11/09/beta-babelzilla-live/) and [jq](http://stedolan.github.io/jq/download/) before.
+
+The following scripts were developped to fetch Songbird langpacks, they are not working anymore since Songbird servers are down :
+
   * **fetch.sh** is a bash script to fetch/download latest Songbird langpacks and extract them in separated locale folders.
 
 Be sure to install xsltproc and unzip before (available on Debian/Ubuntu):
@@ -48,9 +55,6 @@ sudo apt-get install xsltproc unzip
 
   * **repack.sh** is quite the same script but it repack langpacks to be compatible with Nightingale.
   * **fetch-missing.sh** is a bash script to download Songbird langpacks which are not shipped by default (less than 50% strings translated)
-  * **produce-langpack.sh** is a bash script to produce langpacks xpi files for Nightingale based on strings from [Adofex](http://beta.babelzilla.org/projects/p/Nightingale/) and Mozilla strings it also generates a locales.xml file
-
-Be sure to install [tx](http://blog.babelzilla.org/2012/11/09/beta-babelzilla-live/) and [jq](http://stedolan.github.io/jq/download/) before.
 
 
 ## TODO
