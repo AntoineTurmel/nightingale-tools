@@ -126,7 +126,7 @@ if [ "$ngalechange" != 'Already up-to-date.' ] || [ "$1" = "-f" ]; then
 			mkdir $compiled/latest
 		fi
 
-		cp $compiled/$ngalebuild/* $compiled/latest -r
+		cp -R $compiled/$ngalebuild/* $compiled/latest
 
 		#Uploading on sourceforge.net
 		cd "${compiled}"
