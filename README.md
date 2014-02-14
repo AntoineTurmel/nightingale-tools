@@ -42,6 +42,8 @@ Be sure to have rsync and git installed
 
   * **produce-langpack.sh** is a bash script to produce langpacks xpi files for Nightingale based on strings from [Adofex](http://beta.babelzilla.org/projects/p/Nightingale/) and Mozilla strings it also generates a locales.xml file
 
+  * **push.sh** is a bash script to push en-US locales change on Adofex
+
 Be sure to install [tx](http://blog.babelzilla.org/2012/11/09/beta-babelzilla-live/) and [jq](http://stedolan.github.io/jq/download/) before.
 
 The following scripts were developped to fetch Songbird langpacks, they are not working anymore since Songbird servers are down :
