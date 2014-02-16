@@ -4,7 +4,7 @@
 tx pull -a -f
 
 # The langpack version matching Nightingale version
-ver_langpack="1.12.1"
+ver_langpack="1.12.2a"
 
 # Minimum version
 ver_min="1.12.0"
@@ -175,3 +175,15 @@ do
 done
 
 echo '</SongbirdInstallBundle>' >> locales.xml
+
+if [ "$1" = "-u" ]; then
+  mkdir $ver_langpack
+  mv locales.xml $ver_langpack
+  mv langpack* $ver_langpack
+  rsync -e ssh $ver_langpack ngaleoss@getnightingale.com://home//ngaleoss//locales.getnightingale.com//langpacks -r --progress
+  rm -rf $ver_langpack
+  cd ..
+  rm -rf locales
+else
+  echo "Manual upload required"
+fi
