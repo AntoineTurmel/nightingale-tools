@@ -1,5 +1,11 @@
 #!/bin/bash
 
+#l10n script folder
+l10n_folder='/home/serveur/dev/nightingale-tools/l10n'
+
+# Go the directory
+cd $l10n_folder
+
 # Pull every locales from Adofex (without en-US)
 tx pull -a -f
 
