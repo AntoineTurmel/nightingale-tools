@@ -3,6 +3,9 @@
 # Pull every locales from Adofex (without en-US)
 tx pull -a -f
 
+if [ $? -eq 0 ]
+then
+
 # The langpack version matching Nightingale version
 ver_langpack="1.12.2a"
 
@@ -186,4 +189,8 @@ if [ "$1" = "-u" ]; then
   rm -rf locales
 else
   echo "Manual upload required"
+fi
+
+else
+    echo "tx failed"
 fi
